@@ -1,0 +1,25 @@
+{% extends "frames/base.html" %}
+{% block content %}
+    <h2>Films that you can watch right here</h2>
+    <ul>
+        {% for film in filmsWatch %}
+            <li>
+                <div>
+                    <img src="{{film.poster}}" width="333" height="500"/>
+                    <a href="{{'../film/?imdbID='|add:film.imdbID}}"><p>{{ film.titleRu }}</p></a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Catalog</h2>
+    <ul>
+        {% for film in films %}
+            <li>
+                <div>
+                    <img src="{{film.posterUrlPreview}}" width="333" height="500"/>
+                    <a href="{{'../film/?imdbID='|add:film.imdbId}}"><p>{{ film.nameOriginal }}</p></a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

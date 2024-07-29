@@ -1,0 +1,21 @@
+{% extends "frames/base.html" %}
+{% load static %}
+{% block content %}
+    {% if film.titleRu %}
+        <h2>{{film.titleRu}}</h2>
+    {% else %}
+        <h2>{{film.titleO}}</h2>
+    {% endif %}
+
+    {% if film.posterLocal %}
+        <img src="{% static 'crimsonFilms/posters/'|add:film.posterLocal %}" alt="{{film.titleO|add:' poster'}}">
+    {% else %}
+        <img src="{film.poster}" alt="{{film.Title|add:' poster'}}">
+    {% endif %}
+    {% if film.videoLocal%}
+    <h2>Просмотр</h2>
+    <video width="960" height="540" controls>
+        <source src="{% static 'crimsonFilms/films/'|add:film.videoLocal %}" type="video/mp4">
+    </video>
+    {% endif %}
+{% endblock content %}
